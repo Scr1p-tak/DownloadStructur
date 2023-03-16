@@ -16,7 +16,7 @@ def get_files():
 
     ofiles = (file for file in os.listdir(source)
              if os.path.isfile(os.path.join(source, file)))
-    for file in ofiles:  # You could shorten this to one lin
+    for file in ofiles:
         extension = os.path.splitext(file)[1]
         extension = extension[1:]
         shutil.move(source + file, source + extension + '/' + file)
