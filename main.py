@@ -4,13 +4,13 @@ import shutil
 
 
 def get_files():
-    source = r'/home/mrx/Downloads/'
+    source = os.path.expanduser("~/Downloads/")
     files = os.listdir(source)
     for file in files:
         extension = os.path.splitext(file)[1]
         extension = extension[1:]
         try:
-            os.makedirs('/home/mrx/Downloads/' + extension)
+            os.makedirs(source + extension)
         except FileExistsError:
             pass
 
@@ -19,7 +19,7 @@ def get_files():
     for file in ofiles:  # You could shorten this to one lin
         extension = os.path.splitext(file)[1]
         extension = extension[1:]
-        shutil.move(source + file, '/home/mrx/Downloads/' + extension + '/' + file)
+        shutil.move(source + file, source + extension + '/' + file)
 
 if __name__ == '__main__':
     get_files()
